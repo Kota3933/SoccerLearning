@@ -1,19 +1,35 @@
+"use client";
+
 import Link from 'next/link';
+import { useState, useEffect } from "react";
 
 import SearchBar from './SearchBar';
 //import NewRegistration from './NewRegistration'
 // import Login from './Login';
 
-function Header(){
+function Header() {
+  const [headerWidth, setHeaderWidth] = useState(0);
+
+  useEffect(() => {
+    const updateHeaderWidth = () => {
+      setHeaderWidth(window.innerWidth);
+    }
+    updateHeaderWidth();
+
+    window.addEventListener("resize", updateHeaderWidth);
+    return () => window.removeEventListener("resize", updateHeaderWidth);
+
+  }, []);
+
   return (
-    <header className="bg-white text-[#4F772D] py-4 shadow-md">
-      <div className=" flex  items-center px-16">
+    <header style={{ width: `${headerWidth}px` }} className="bg-white text-[#4F772D] py-4 shadow-md">
+      <div  className=" flex  items-center px-16">
         <h1 className="text-xl font-bold ">
           <Link href="/">Soccer Learning</Link>
         </h1>
 
         <h2 className='text-xl font-bold px-12'>
-          <Link href="/">Category</Link> 
+          <Link href="/">Category</Link>
         </h2>
         <div>
           <SearchBar />
