@@ -9,7 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
     "@emotion/cache": "^11.14.0",
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
@@ -22,13 +21,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "styled-components": "^6.1.16"
-=======
-    "@supabase/ssr": "^0.6.1",
-    "@supabase/supabase-js": "^2.49.4",
-    "next": "15.2.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0"
->>>>>>> d56295de1562acd5736c751d4fc35908cb73d7a0
+    
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -38,10 +31,6 @@
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.2.4",
-<<<<<<< HEAD
-=======
-    "supabase": "^2.20.5",
->>>>>>> d56295de1562acd5736c751d4fc35908cb73d7a0
     "tailwindcss": "^4",
     "typescript": "^5"
   }
