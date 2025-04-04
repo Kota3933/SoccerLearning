@@ -1,7 +1,7 @@
 import { Avatar, Box, Button} from '@mui/material'
 import { Person } from '@mui/icons-material'
 import './style.css'
-import getLectureData from '../DataBaseAPI/getLectureData';
+import getLectureData from '../../DataBaseAPI/getLectureData';
 import { useEffect,} from 'react';
 export default function Info({data}) {
 

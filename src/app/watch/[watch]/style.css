@@ -1,4 +1,4 @@
-@reference "../globals.css";
+@reference "../../globals.css";
 body * p{
 	@apply p-3;
 }
