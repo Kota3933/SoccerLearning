@@ -1,5 +1,6 @@
 import { Box, List, ListItemButton, ListItemText } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { url } from "./VideoPlayer";
 
 export default function VideoList({data}) {
 	const [selectedIndex, setSelectedIndex] = useState(0);
@@ -23,6 +24,7 @@ export default function VideoList({data}) {
 		border: 1
 	}
 
+
 	return (
 		<main  className="listBox">
 			<Box sx={{bgcolor: '#E5E5E5', borderRadius: '8px', minHeight: '100%'}}>
@@ -38,21 +40,6 @@ export default function VideoList({data}) {
 						</ListItemButton>
 					)
 				})}
-						{/* <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
-							<ListItemText primary="1. 正確なパスの出し方" />
-						</ListItemButton>
-						<ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1)}>
-							<ListItemText primary="2. 効率的なドリブル技術" />
-						</ListItemButton>
-						<ListItemButton selected={selectedIndex === 2} onClick={(event) => handleListItemClick(event, 2)}>
-							<ListItemText primary="3. ボールコントロールの基本" />
-						</ListItemButton>
-						<ListItemButton selected={selectedIndex === 3} onClick={(event) => handleListItemClick(event, 3)}>
-							<ListItemText primary="4. シュートの精度を高めるコツ" />
-						</ListItemButton>
-						<ListItemButton selected={selectedIndex === 4} onClick={(event) => handleListItemClick(event, 4)}>
-							<ListItemText primary="5. 実戦で役立つトラップテクニック" />
-						</ListItemButton> */}
 					</List>
 				</Box>
 

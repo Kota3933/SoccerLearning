@@ -1,16 +1,31 @@
+'use client'
+import { Button } from "@mui/material";
+import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 
-export default function VideoPlayer() {
+export let url;
+
+export default function VideoPlayer({ data }) {
+
+	useEffect(() => {
+		url = data.videos[0].url;
+	}, [])
+
 	const videoInfo = {
-		url: "https://rthrpndgyprifwhuqyga.supabase.co/storage/v1/object/public/video-bucket//DribbleVideoSample.mp4",
-		width: "70%",
-		height: "70%",
+		url: url,
+		width: "1000px",
+		height: "562px",
 		playing: true,
 		loop: false,
 		controls: true
 	}
 
+	// videoInfo.url = data.videos[1].url;
+
 	return (
-		<ReactPlayer className="video" {...videoInfo} />		
+		<main>
+			<ReactPlayer {...videoInfo} />
+			{/* <Button variant="contained">変更</Button>	 */}
+		</main>
 	)
 }
