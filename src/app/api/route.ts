@@ -1,18 +1,18 @@
 'use server'
 
-//講義のidを渡すと、その講義の情報と、講義に属する動画の情報がオブジェクトで返されるAPI
-//このAPIを呼び出すには、非同期関数内で、非同期(await)で呼び出す必要がある
-
 import { createClient } from "../../../utils/supabase/server"
 
-export default async function getLectureData(id:number) {
+export async function GET(request: Request) {
+
+	const {searchParams} = new URL(request.url);
+	const id = searchParams.get('id');
+
+	//supabaseへのアクセス＆データ取得
 	const supabase = await createClient();
 	const lectures = await supabase
-		.from('lectures')
-		.select()
-		.eq('id', id);
-
-	//探した講義が存在するかチェック
+	.from('lectures')
+	.select()
+	.eq('id', id);
 	let search_id, lecture;
 	if(lectures.data) {
 		lecture = lectures.data[0];
@@ -20,7 +20,6 @@ export default async function getLectureData(id:number) {
 	}else{
 		search_id = null;
 	}
-
 	const videos = await supabase
 		.from('videos')
 		.select()
@@ -29,6 +28,13 @@ export default async function getLectureData(id:number) {
 	const result = {
 		lecture: lecture,
 		videos: videos.data
-	}
-	return result;
-} 
+	};
+
+	//APIの作成
+	return new Response(JSON.stringify(result), {
+		status: 200,
+		headers: {'Content-Type': 'application/json'},
+	})
+
+
+}

@@ -1,0 +1,36 @@
+@reference "../../globals.css";
+body * p{
+	@apply p-3;
+}
+.videoTitle {
+	@apply text-4xl;
+}
+.creator{
+	@apply p-3 flex align-middle;
+}
+.creatorName {
+	@apply text-2xl;
+}
+
+.desc {
+	@apply p-3;
+}
+.descTitle {
+	@apply text-2xl;
+}
+.descSentence {
+	@apply p-1;
+}
+
+.video {
+	@apply inline-block p-2 rounded-md;
+}
+ .list{
+	@apply inline-block;
+}
+.listTitle {
+	@apply p-1;
+}
+.listBox {
+	@apply p-2;
+}
