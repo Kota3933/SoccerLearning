@@ -2,14 +2,13 @@ import { Box, List, ListItemButton, ListItemText } from "@mui/material";
 import { useEffect, useState } from "react";
 import { url } from "./VideoPlayer";
 
-export default function VideoList({data}) {
-	const [selectedIndex, setSelectedIndex] = useState(0);
+export default function VideoList({data, selectedIndex, onChange}) {
 
 	const handleListItemClick = (
 	  event: React.MouseEvent<HTMLDivElement, MouseEvent>,
 	  index: number,
 	) => {
-	  setSelectedIndex(index);
+		onChange(index);
 	};
 
 	const boxProperty = {

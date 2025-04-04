@@ -3,16 +3,16 @@ import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import ReactPlayer from "react-player";
 
-export let url;
+// export let url;
 
-export default function VideoPlayer({ data }) {
+export default function VideoPlayer({ data, selectedIndex}) {
 
-	useEffect(() => {
-		url = data.videos[0].url;
-	}, [])
+	// useEffect(() => {
+	// 	url = data.videos[0].url;
+	// }, [])
 
 	const videoInfo = {
-		url: url,
+		url: data.videos[selectedIndex].url,
 		width: "1000px",
 		height: "562px",
 		playing: true,

@@ -25,10 +25,7 @@ export default function watch(props:{params: Promise<{id: number}>}) {
 				? <p>読み込み中</p>
 				: 
 				<>
-					<div className="flex">
-						<VideoPlayer data={data} />
-						<VideoList data={data} />
-					</div>
+					<Video data={data} />
 					<Info data={data}/>
 				</>
 			}
