@@ -7,15 +7,16 @@ import { createClient } from "../../../utils/supabase/server"
 
 export default async function getLectureData(id:number) {
 	const supabase = await createClient();
-	const lecture = await supabase
+	const lectures = await supabase
 		.from('lectures')
 		.select()
 		.eq('id', id);
 
 	//探した講義が存在するかチェック
-	let search_id;
-	if(lecture.data) {
-		search_id = lecture.data[0].id;
+	let search_id, lecture;
+	if(lectures.data) {
+		lecture = lectures.data[0];
+		search_id = lecture.id;
 	}else{
 		search_id = null;
 	}
@@ -27,7 +28,7 @@ export default async function getLectureData(id:number) {
 
 	const result = {
 		lecture: lecture,
-		videos: videos
+		videos: videos.data
 	}
 	return result;
 } 
