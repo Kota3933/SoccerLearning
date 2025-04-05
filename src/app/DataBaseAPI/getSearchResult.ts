@@ -7,7 +7,7 @@ import { createClient } from "../../../utils/supabase/server";
 
 export default async function getSearchResult(word:string) {
 	const supabse = await createClient();
-	const result = supabse
+	const result = await supabse
 		.from('lectures')
 		.select()
 		.like('title', `%${word}%`);
