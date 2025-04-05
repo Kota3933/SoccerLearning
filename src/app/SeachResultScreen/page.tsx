@@ -1,11 +1,20 @@
+'use client'
 import React from "react";
 import Link from 'next/link';
 import { List, ListItem, ListItemIcon, ListItemText, Typography, Divider, Box } from "@mui/material";
 import { Pagination, Stack } from '@mui/material';
 
 import NarrowDownYourCourses from "./ComponentsInSearchResultScreenFolders/NarrowDownYourCourses";
+import useSWR from "swr";
 
 export default function SeachResultScreen() {
+	const url = 'http://localhost:3000/api/searchResult?word=試合&position=センターバック（CB）&skill=パス';
+
+	const fetcher = (...args) => fetch(...args).then(res => res.json());
+	const {data, error, isLoading} = useSWR(url, fetcher);
+	if(!isLoading) console.log(data);
+
+
 	return (
 		<div style={{ display: "flex", marginTop: "40px", justifyContent: "center" }}>
 			<div style={{ display: "flex", marginRight: "30px", alignItems: "center", flexDirection: "column" }}>
