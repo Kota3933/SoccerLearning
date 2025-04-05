@@ -1,6 +1,6 @@
 'use server'
 
-import { createClient } from "../../../utils/supabase/server"
+import { createClient } from "../../../../utils/supabase/server"
 
 export async function GET(request: Request) {
 
@@ -10,9 +10,9 @@ export async function GET(request: Request) {
 	//supabaseへのアクセス＆データ取得
 	const supabase = await createClient();
 	const lectures = await supabase
-	.from('lectures')
-	.select()
-	.eq('id', id);
+		.from('lectures')
+		.select()
+		.eq('id', id);
 	let search_id, lecture;
 	if(lectures.data) {
 		lecture = lectures.data[0];

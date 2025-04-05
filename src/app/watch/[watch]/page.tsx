@@ -6,18 +6,23 @@ import { Button } from "@mui/material";
 import { use } from "react";
 import useSWR from 'swr';
 import Video from "./Video";
+import getSearchResult from "@/app/DataBaseAPI/getSearchResult";
 
 export default function watch(props:{params: Promise<{id: number}>}) {
 	//講義データ取得
 	const params = use(props.params);
 	const id = params.watch;
 
-	const url = 'http://localhost:3000/api?id=';
+	const url = 'http://localhost:3000/api/lectureInfo?id=';
 	const fetcher = (...args) => fetch(...args).then(res => res.json());
 
 	const {data, error, isLoading} = useSWR(url+id, fetcher);
 	if(isLoading === false) data.videos.sort((a:number, b:number) => a.id - b.id);
 
+	const clickHandle = async() => {
+		const testData = await getSearchResult('必見');
+		console.log(testData)
+	}
 
 	return (
 		<main>
@@ -27,6 +32,7 @@ export default function watch(props:{params: Promise<{id: number}>}) {
 				<>
 					<Video data={data} />
 					<Info data={data}/>
+					<Button variant="contained" onClick={clickHandle}>検索</Button>
 				</>
 			}
 		</main>
