@@ -36,7 +36,7 @@ export default function watch(props:{params: Promise<{id: number}>}) {
 					<Tags />
 					<Info data={data}/>
 					{/* <Button variant="contained" onClick={clickHandle}>検索</Button> */}
-					<Test />
+					<Test data={data}/>
 				</>
 			}
 		</main>
