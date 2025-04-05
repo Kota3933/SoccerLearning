@@ -8,6 +8,7 @@ import useSWR from 'swr';
 import Video from "./Video";
 import getSearchResult from "@/app/DataBaseAPI/getSearchResult";
 import Tags from "./Tags";
+import Test from "./Test";
 
 export default function watch(props:{params: Promise<{id: number}>}) {
 	//講義データ取得
@@ -34,7 +35,8 @@ export default function watch(props:{params: Promise<{id: number}>}) {
 					<Video data={data} />
 					<Tags />
 					<Info data={data}/>
-					<Button variant="contained" onClick={clickHandle}>検索</Button>
+					{/* <Button variant="contained" onClick={clickHandle}>検索</Button> */}
+					<Test />
 				</>
 			}
 		</main>
