@@ -5,7 +5,7 @@ import { createClient } from "../../../../utils/supabase/server"
 export async function GET(request: Request) {
 
 	//検索ワード&フィルターを抽出
-	const {searchParams} = new URL(request.url);
+	const { searchParams } = new URL(request.url);
 	const word = searchParams.get('word');
 	const positions = searchParams.getAll('position');
 	const skills = searchParams.getAll('skill');
@@ -17,22 +17,23 @@ export async function GET(request: Request) {
 		.select()
 		.like('title', `%${word}%`)
 
-	let result = data.data;
+	let result;
+	if (data.data) result = data.data;
 
 	//フィルターによる絞り込み
-	if(positions.length) {
+	if (positions.length) {
 		console.log("ポジションの絞り込みを実行")
-		result =  result?.filter((lecture) => {
-			for(const position of positions){
-				return 	lecture.position?.includes(position);
+		result = result?.filter((lecture) => {
+			for (const position of positions) {
+				return lecture.position?.includes(position);
 			}
 		})
 	}
-	if(skills.length) {
+	if (skills.length) {
 		console.log("スキルの絞り込みを実行")
 		result = result?.filter((lecture) => {
-			for(const skill of skills){
-				return 	lecture.skill?.includes(skill);
+			for (const skill of skills) {
+				return lecture.skill?.includes(skill);
 			}
 		})
 	}
@@ -42,7 +43,7 @@ export async function GET(request: Request) {
 	//APIの作成
 	return new Response(JSON.stringify(result), {
 		status: 200,
-		headers: {'Content-Type': 'application/json'},
+		headers: { 'Content-Type': 'application/json' },
 	})
 
 
