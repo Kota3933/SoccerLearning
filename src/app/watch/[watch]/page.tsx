@@ -32,7 +32,7 @@ export default function watch(props:{params: Promise<{id: number}>}) {
 				: 
 				<>
 					<Video data={data} />
-					<Tags />
+					<Tags data={data}/>
 					<Info data={data}/>
 					<Button variant="contained" onClick={clickHandle}>検索</Button>
 				</>
