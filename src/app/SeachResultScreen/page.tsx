@@ -15,6 +15,7 @@ import NarrowDownYourCourses from "./ComponentsInSearchResultScreenFolders/Narro
 import { useSearchParams } from "next/navigation";
 import useSWR from "swr";
 import QuerySendTest from "./QuerySendTest";
+import TestComp from "./TestComp";
 
 export default function SeachResultScreen() {
 
@@ -94,6 +95,7 @@ export default function SeachResultScreen() {
 
 	return (
 		<main>
+			<TestComp />
 			<QuerySendTest />
 			{isLoading 
 				? <p>Loading...</p>

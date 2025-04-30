@@ -1,38 +1,42 @@
 import { Button } from "@mui/material";
 import { redirect } from "next/navigation";
+import { useEffect, useState } from "react";
+
+const params = new URLSearchParams();
 
 export default function QuerySendTest(){
 
 	//stateで値管理
-	const word="試合";
-	const positions =[
+	const [positions, setPositions] = useState([
 		"セントラルミッドフィルダー（CMF）",
 		"サイドバック/フルバック（SB/FB）"
-	];
-	const skills=[
+	]);
+	const [skills, setSkills] = useState([
 		"戦術",
 		"ポジショニング"
-	];
+	]);
+
+	useEffect(() => {
+		for(const position of positions){
+			params.append("position", position);
+		}
+		for(const skill of skills){
+			params.append("skill", skill);
+		}
+	}, []);
 
 
-	let URL = "http://localhost:3000/SeachResultScreen?word=" + word;
-	for(const position of positions){
-		URL = URL + "&position=" + position;
-	}
-	for(const skill of skills){
-		URL = URL + "&skill=" + skill;
-	}
-
-	console.log(URL);
-
-
-	const doSearch = () => {
-		redirect(URL);
-	}
 
 	return (
 		<main>
-			<Button variant="contained" onClick={doSearch}>移動</Button>
+			{/* <Button variant="contained">移動</Button> */}
 		</main>
 	)
+}
+
+export function doSearch(word:string){
+	params.set('word', word);
+	const url = `http://localhost:3000/SeachResultScreen?${params.toString()}`;
+	console.log(params.toString());
+	redirect(url);
 }
